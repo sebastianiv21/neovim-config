@@ -11,13 +11,13 @@ M.ui = {
   -- statusline
   statusline = {
     theme = "minimal",
-    separator_style = "round"
+    separator_style = "round",
   },
 
   -- dashboard
-  nvdash = {
-    load_on_startup = true
-  },
+  -- nvdash = {
+  --   load_on_startup = true
+  -- },
 
   hl_override = highlights.override,
   hl_add = highlights.add,

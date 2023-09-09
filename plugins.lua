@@ -278,6 +278,124 @@ local plugins = {
     end,
   },
 
+  -- dashboard
+  {
+    "glepnir/dashboard-nvim",
+    event = "VimEnter",
+    config = function()
+      require("dashboard").setup {
+        -- config
+        theme = "hyper",
+        config = {
+          week_header = {
+            enable = true,
+          },
+          shortcut = {
+            { desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
+            {
+              icon = " ",
+              icon_hl = "@variable",
+              desc = "Files",
+              group = "Label",
+              action = "Telescope find_files",
+              key = "f",
+            },
+            {
+              desc = " Apps",
+              group = "DiagnosticHint",
+              action = "Telescope app",
+              key = "a",
+            },
+            {
+              desc = " dotfiles",
+              group = "Number",
+              action = "Telescope dotfiles",
+              key = "d",
+            },
+          },
+        },
+      }
+    end,
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  },
+
+  -- toggleterm
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    opts = {--[[ things you want to change go here]]
+    },
+    keys = {
+      {
+        "<leader>t\\",
+        "<cmd>ToggleTerm direction=horizontal<cr>",
+        mode = "n",
+        desc = "[T]oggle Horizontal [T]erminal",
+      },
+      {
+        "<leader>t|",
+        "<cmd>ToggleTerm size=60 direction=vertical<cr>",
+        mode = "n",
+        desc = "[T]oggle Vertical [T]erminal",
+      },
+    },
+    config = function()
+      require("toggleterm").setup()
+
+      function _G.set_terminal_keymaps()
+        local opts = { buffer = 0 }
+        vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+        vim.keymap.set("t", "jj", [[<C-\><C-n>]], opts)
+        vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
+        vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
+        vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
+        vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
+        vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
+      end
+
+      vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
+    -- end,
+    
+      -- custom terminals
+      local Terminal = require("toggleterm.terminal").Terminal
+      local T = {}
+    
+      T.on_open = function(term)
+        vim.cmd "startinsert!"
+        vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+      end
+    
+      T.on_close = function(term)
+        vim.cmd "startinsert!"
+      end
+    
+      --lazygit
+      local lazygit = Terminal:new {
+        cmd = "lazygit",
+        dir = "git_dir",
+        direction = "float",
+        float_opts = {
+          border = "double",
+        },
+        -- function to run on opening the terminal
+        on_open = T.on_open(),
+        -- function to run on closing the terminal
+        on_close = T.on_close(),
+      }
+    
+      function _lazygit_toggle()
+        lazygit:toggle()
+      end
+    
+      vim.api.nvim_set_keymap(
+        "n",
+        "<leader>gg",
+        "<cmd>lua _lazygit_toggle()<CR>",
+        { noremap = true, silent = true, desc = "Open Lazy[G]it" }
+      )
+    end,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

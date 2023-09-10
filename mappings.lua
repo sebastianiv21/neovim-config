@@ -73,6 +73,26 @@ M.general = {
   },
 }
 
+-- debugger
+M.dap = {
+  plugin = true,
+  n = {
+    ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Toggle [D]ebug [B]reakpoint" },
+  },
+}
+
+M.dap_python = {
+  plugin = true,
+  n = {
+    ["<leader>dpr"] = {
+      function()
+        require("dap-python").test_method()
+      end,
+      "[R]un [P]ython Test",
+    },
+  },
+}
+
 -- more keybinds!
 
 return M

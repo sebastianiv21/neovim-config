@@ -372,6 +372,66 @@ local plugins = {
     end,
   },
 
+  -- debugger
+  {
+    "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" },
+    config = function()
+      local dap = require "dap"
+      local dapui = require "dapui"
+      dapui.setup()
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap",
+    config = function(_, opts)
+      require("core.utils").load_mappings "dap"
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+    },
+    config = function()
+      local os_name = vim.loop.os_uname().sysname
+
+      if os_name == "Windows_NT" then
+        local path = "%LOCALAPPDATA%\\nvim-data\\mason\\packages\\debugpy\\venv\\Scripts\\python.exe"
+        require("dap-python").setup(path)
+      end
+
+      require("core.utils").load_mappings "dap_python"
+    end,
+  },
+
+  -- ChatGPT
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  --   config = function()
+  --     require("chatgpt").setup({
+  --       async_api_key_cmd = "pass show api/tokens/openai"
+  --     })
+  --   end,
+  -- },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

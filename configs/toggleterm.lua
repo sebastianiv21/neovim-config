@@ -1,4 +1,6 @@
 local Terminal = require("toggleterm.terminal").Terminal
+
+-- lazygit
 local lazygit = Terminal:new {
   cmd = "lazygit",
   dir = "git_dir",
@@ -17,13 +19,6 @@ local lazygit = Terminal:new {
   end,
 }
 
-function _lazygit_toggle()
+function _LAZYGIT_TOGGLE()
   lazygit:toggle()
 end
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>gg",
-  "<cmd>lua _lazygit_toggle()<CR>",
-  { noremap = true, silent = true, desc = "Open Lazy[G]it" }
-)

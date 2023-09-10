@@ -124,10 +124,10 @@ local plugins = {
   },
 
   -- git blame
-  {
-    "f-person/git-blame.nvim",
-    event = "VeryLazy",
-  },
+  -- {
+  --   "f-person/git-blame.nvim",
+  --   event = "VeryLazy",
+  -- },
 
   -- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either
   -- LSP, Tree-sitter, or regex matching.
@@ -325,6 +325,7 @@ local plugins = {
     version = "*",
     opts = {--[[ things you want to change go here]]
     },
+    lazy = false,
     keys = {
       {
         "<leader>t\\",
@@ -337,6 +338,18 @@ local plugins = {
         "<cmd>ToggleTerm size=60 direction=vertical<cr>",
         mode = "n",
         desc = "[T]oggle Vertical [T]erminal",
+      },
+      {
+        "<leader>tf",
+        "<cmd>ToggleTerm size=60 direction=float<cr>",
+        mode = "n",
+        desc = "[T]oggle [F]loating [T]erminal",
+      },
+      {
+        "<leader>gg",
+        "<cmd>lua _LAZYGIT_TOGGLE()<CR>",
+        mode = "n",
+        desc = "[T]oggle Lazy[G]it",
       },
     },
     config = function()
@@ -354,45 +367,8 @@ local plugins = {
       end
 
       vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
-    -- end,
-    
-      -- custom terminals
-      local Terminal = require("toggleterm.terminal").Terminal
-      local T = {}
-    
-      T.on_open = function(term)
-        vim.cmd "startinsert!"
-        vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-      end
-    
-      T.on_close = function(term)
-        vim.cmd "startinsert!"
-      end
-    
-      --lazygit
-      local lazygit = Terminal:new {
-        cmd = "lazygit",
-        dir = "git_dir",
-        direction = "float",
-        float_opts = {
-          border = "double",
-        },
-        -- function to run on opening the terminal
-        on_open = T.on_open(),
-        -- function to run on closing the terminal
-        on_close = T.on_close(),
-      }
-    
-      function _lazygit_toggle()
-        lazygit:toggle()
-      end
-    
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>gg",
-        "<cmd>lua _lazygit_toggle()<CR>",
-        { noremap = true, silent = true, desc = "Open Lazy[G]it" }
-      )
+
+      require "custom.configs.toggleterm"
     end,
   },
 

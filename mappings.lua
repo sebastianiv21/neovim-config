@@ -29,6 +29,14 @@ M.general = {
     ["L"] = { "$", "go to end of line", opts = { nowait = true } },
     -- quit
     ["<leader>qq"] = { "<cmd>qa<cr>", "quit all", opts = { nowait = true } },
+    -- search
+    ["gw"] = { "*N", "search word under cursor", opts = { nowait = true } },
+    ["gW"] = { "#N", "search word under cursor backwards", opts = { nowait = true } },
+    ["<leader>fr"] = {
+      [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+      "[S]earch and [R]eplace word",
+      opts = { nowait = true },
+    },
   },
   i = {
     -- move lines
@@ -54,37 +62,13 @@ M.general = {
     ["L"] = { "$", "go to end of line", opts = { nowait = true } },
     -- save file
     ["<C-s>"] = { "<cmd>w<cr><esc>", "save file", opts = { nowait = true } },
-  },
-}
-
--- nvterm
-local ft_cmds = {
-  python = "python " .. vim.fn.expand "%:t",
-}
-
-M.nvterm = {
-  n = {
-    -- toggle terminal mode
-    ["<A-f>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "Toggle floating term",
-    },
-    -- run file in terminal
-    ["<leader>rt"] = {
-      function()
-        require("nvterm.terminal").send(ft_cmds[vim.bo.filetype], "float")
-      end,
-      "Run file in terminal",
-    },
-  },
-  t = {
-    ["<A-f>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "Toggle floating term",
+    -- search
+    ["gw"] = { "*N", "search word under cursor", opts = { nowait = true } },
+    ["gW"] = { "#N", "search word under cursor backwards", opts = { nowait = true } },
+    ["<leader>fr"] = {
+      [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+      "[F]ind and [R]eplace word in current file",
+      opts = { nowait = true },
     },
   },
 }

@@ -78,6 +78,7 @@ M.dap = {
   plugin = true,
   n = {
     ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Toggle [D]ebug [B]reakpoint" },
+    ["<leader>dr"] = { "<cmd>DapContinue<CR>", "[R]un or Continue the [D]ebugger" },
   },
 }
 

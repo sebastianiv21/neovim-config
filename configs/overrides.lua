@@ -43,14 +43,20 @@ M.mason = {
     "html-lsp",
     "typescript-language-server",
     "deno",
+    "eslint-lsp",
     "prettier",
+    "js-debug-adapter",
 
     -- c/cpp stuff
     "clangd",
     "clang-format",
 
     --python stuff
+    "mypy",
+    "ruff",
     "pyright",
+    "black",
+    "debugpy",
   },
 }
 

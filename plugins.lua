@@ -11,6 +11,7 @@ local plugins = {
       -- format & linting
       {
         "jose-elias-alvarez/null-ls.nvim",
+        event = "VeryLazy",
         config = function()
           require "custom.configs.null-ls"
         end,
@@ -21,6 +22,22 @@ local plugins = {
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
+
+  -- another linters
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require "custom.configs.nvim-lint"
+  --   end,
+  -- },
+  -- {
+  --   "mhartington/formatter.nvim",
+  --   event = "VeryLazy",
+  --   opts = function()
+  --     require "custom.configs.formatter"
+  --   end,
+  -- },
 
   -- override plugin configs
   {
@@ -375,6 +392,7 @@ local plugins = {
   -- debugger
   {
     "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
     requires = { "mfussenegger/nvim-dap" },
     config = function()
       local dap = require "dap"
@@ -394,6 +412,7 @@ local plugins = {
   {
     "mfussenegger/nvim-dap",
     config = function(_, opts)
+      require "custom.configs.dap"
       require("core.utils").load_mappings "dap"
     end,
   },
@@ -405,14 +424,7 @@ local plugins = {
       "rcarriga/nvim-dap-ui",
     },
     config = function()
-      local os_name = vim.loop.os_uname().sysname
-
-      if os_name == "Windows_NT" then
-        local path = "%LOCALAPPDATA%\\nvim-data\\mason\\packages\\debugpy\\venv\\Scripts\\python.exe"
-        require("dap-python").setup(path)
-      end
-
-      require("core.utils").load_mappings "dap_python"
+      require "custom.configs.dap-python"
     end,
   },
 

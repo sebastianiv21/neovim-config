@@ -444,6 +444,16 @@ local plugins = {
   --   end,
   -- },
 
+  -- Oil.nvim - edit filesystem like a buffer
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    event = "VeryLazy",
+    config = function()
+      require("oil").setup {}
+    end,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

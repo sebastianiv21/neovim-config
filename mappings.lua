@@ -94,6 +94,11 @@ M.dap_python = {
   },
 }
 
+M.oil = {
+  n = {
+    ["-"] = { "<cmd>Oil<cr>", "Open [O]il in parent directory" },
+  },
+}
 -- more keybinds!
 
 return M

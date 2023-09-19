@@ -60,6 +60,9 @@ local plugins = {
     opts = overrides.nvterm,
   },
 
+  -- syntax highlighting for js/jsx files
+  "neoclide/vim-jsx-improve",
+
   -- Install a plugin
   {
     "max397574/better-escape.nvim",

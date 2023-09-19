@@ -342,7 +342,7 @@ local plugins = {
     version = "*",
     opts = {--[[ things you want to change go here]]
     },
-    lazy = false,
+    event = "VeryLazy",
     keys = {
       {
         "<leader>t\\",
@@ -452,6 +452,12 @@ local plugins = {
     config = function()
       require("oil").setup {}
     end,
+  },
+
+  -- multicursors
+  {
+    "mg979/vim-visual-multi",
+    event = "VeryLazy",
   },
 
   -- To make a plugin not be loaded

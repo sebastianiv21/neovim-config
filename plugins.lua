@@ -61,7 +61,11 @@ local plugins = {
   },
 
   -- syntax highlighting for js/jsx files
-  "neoclide/vim-jsx-improve",
+  {
+    "neoclide/vim-jsx-improve",
+    ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    event = "VeryLazy",
+  },
 
   -- Install a plugin
   {

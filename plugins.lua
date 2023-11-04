@@ -467,6 +467,17 @@ local plugins = {
     event = "VeryLazy",
   },
 
+  -- REST client
+  {
+    "rest-nvim/rest.nvim",
+    event = "VeryLazy",
+    dependencies = { { "nvim-lua/plenary.nvim" } },
+    commit = "8b62563",
+    config = function()
+      require "custom.configs.rest-nvim"
+    end,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

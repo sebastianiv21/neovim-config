@@ -100,6 +100,14 @@ M.oil = {
     ["-"] = { "<cmd>Oil<cr>", "Open [O]il in parent directory" },
   },
 }
+
+M.rest_nvim = {
+  n = {
+    ["<leader>rr"] = { "<Plug>RestNvim", "[R]est [R]equest" },
+    ["<leader>rp"] = { "<Plug>RestNvimPreview", "[R]est [P]review" },
+    ["<leader>rl"] = { "<Plug>RestNvimLast", "[R]est [L]ast [R]equest" },
+  },
+}
 -- more keybinds!
 
 return M

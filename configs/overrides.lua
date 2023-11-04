@@ -23,6 +23,9 @@ M.treesitter = {
     "c",
     "markdown",
     "markdown_inline",
+    "json",
+    "yaml",
+    "http",
   },
   indent = {
     enable = true,
@@ -46,6 +49,7 @@ M.mason = {
     "eslint_d",
     "prettier",
     "js-debug-adapter",
+    "jq",
 
     -- c/cpp stuff
     "clangd",

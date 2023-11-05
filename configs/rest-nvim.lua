@@ -33,7 +33,7 @@ rest_nvim.setup {
   },
   -- Jump to request line on run
   jump_to_request = false,
-  env_file = ".env",
+  env_file = ".httpenv",
   custom_dynamic_variables = {},
   yank_dry_run = true,
 }

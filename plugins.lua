@@ -436,20 +436,18 @@ local plugins = {
   },
 
   -- ChatGPT
-  -- {
-  --   "jackMort/ChatGPT.nvim",
-  --   event = "VeryLazy",
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim",
-  --   },
-  --   config = function()
-  --     require("chatgpt").setup({
-  --       async_api_key_cmd = "pass show api/tokens/openai"
-  --     })
-  --   end,
-  -- },
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require "custom.configs.chatgpt-nvim"
+    end,
+  },
 
   -- Oil.nvim - edit filesystem like a buffer
   {

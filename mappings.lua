@@ -18,6 +18,8 @@ M.general = {
     -- center cursor
     ["<C-d>"] = { "<C-d>zz", "center on page down", opts = { nowait = true } },
     ["<C-u>"] = { "<C-u>zz", "center on page up", opts = { nowait = true } },
+    ["}"] = { "}zz", "center on paragraph down", opts = { nowait = true } },
+    ["{"] = { "{zz", "center on paragraph up", opts = { nowait = true } },
     ["n"] = { "nzzzv", "center on next word", opts = { nowait = true } },
     ["N"] = { "Nzzzv", "center on previous word", opts = { nowait = true } },
     -- do not copy on x

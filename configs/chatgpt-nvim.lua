@@ -1,5 +1,5 @@
 require("chatgpt").setup {
-  api_key_cmd = nil,
+  api_key_cmd = "pass show api/keys/openai",
   yank_register = "+",
   edit_with_instructions = {
     diff = false,

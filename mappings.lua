@@ -6,9 +6,11 @@ M.disabled = {
   n = {
     ["<A-i>"] = "",
     ["<C-n>"] = "",
+    ["<A-h>"] = "",
   },
   t = {
     ["<A-i>"] = "",
+    ["<A-h>"] = "",
   },
 }
 
@@ -25,8 +27,8 @@ M.general = {
     -- do not copy on x
     ["x"] = { '"_x', "do not copy on x", opts = { nowait = true, noremap = true } },
     -- move lines
-    ["<A-j>"] = { "<cmd>m .+1<cr>==", "move line down", opts = { nowait = true } },
-    ["<A-k>"] = { "<cmd>m .-2<cr>==", "move line up", opts = { nowait = true } },
+    -- ["<A-j>"] = { "<cmd>m .+1<cr>==", "move line down", opts = { nowait = true } },
+    -- ["<A-k>"] = { "<cmd>m .-2<cr>==", "move line up", opts = { nowait = true } },
     -- go to
     ["H"] = { "^", "go to start of line (after whitespace)", opts = { nowait = true } },
     ["L"] = { "$", "go to end of line", opts = { nowait = true } },
@@ -50,16 +52,16 @@ M.general = {
   },
   v = {
     -- move lines
-    ["<A-j>"] = { ":m '>+1<cr>gv=gv", "move line up", opts = { nowait = true } },
-    ["<A-k>"] = { ":m '<-2<cr>gv=gv", "move line down", opts = { nowait = true } },
+    -- ["<A-j>"] = { ":m '>+1<cr>gv=gv", "move line up", opts = { nowait = true } },
+    -- ["<A-k>"] = { ":m '<-2<cr>gv=gv", "move line down", opts = { nowait = true } },
     -- go to
     ["H"] = { "^", "go to start of line (after whItespace)", opts = { nowait = true } },
     ["L"] = { "$", "go to end of line", opts = { nowait = true } },
   },
   x = {
     -- move selected line / block of text in visual mode
-    ["<A-j>"] = { ":move '>+1<CR>gv-gv", "move line up", opts = { nowait = true } },
-    ["<A-k>"] = { ":move '<-2<CR>gv-gv", "move line down", opts = { nowait = true } },
+    -- ["<A-j>"] = { ":move '>+1<CR>gv-gv", "move line up", opts = { nowait = true } },
+    -- ["<A-k>"] = { ":move '<-2<CR>gv-gv", "move line down", opts = { nowait = true } },
     -- go to
     ["H"] = { "^", "go to start of line (after whitespace)", opts = { nowait = true } },
     ["L"] = { "$", "go to end of line", opts = { nowait = true } },

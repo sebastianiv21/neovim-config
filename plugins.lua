@@ -162,43 +162,13 @@ local plugins = {
   --   event = "VeryLazy",
   -- },
 
-  -- illuminate.vim - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either
-  -- LSP, Tree-sitter, or regex matching.
   {
-    "RRethy/vim-illuminate",
+    "echasnovski/mini.cursorword",
     event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      delay = 200,
-      large_file_cutoff = 2000,
-      large_file_overrides = {
-        providers = { "lsp" },
-      },
-    },
-    config = function(_, opts)
-      require("illuminate").configure(opts)
-
-      local function map(key, dir, buffer)
-        vim.keymap.set("n", key, function()
-          require("illuminate")["goto_" .. dir .. "_reference"](false)
-        end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
-      end
-
-      map("]]", "next")
-      map("[[", "prev")
-
-      -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
-      vim.api.nvim_create_autocmd("FileType", {
-        callback = function()
-          local buffer = vim.api.nvim_get_current_buf()
-          map("]]", "next", buffer)
-          map("[[", "prev", buffer)
-        end,
-      })
+    version = false,
+    config = function()
+      require("mini.cursorword").setup()
     end,
-    keys = {
-      { "]]", desc = "Next Reference" },
-      { "[[", desc = "Prev Reference" },
-    },
   },
 
   -- search/replace in multiple files
@@ -236,16 +206,12 @@ local plugins = {
 
   -- separate/expand objects/arrays
   {
-    "Wansmer/treesj",
-    keys = {
-      {
-        "<leader>tj",
-        "<cmd>TSJToggle<cr>",
-        desc = "Toggle Treesitter Join",
-      },
-    },
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    opts = { use_default_keymaps = false },
+    "echasnovski/mini.splitjoin",
+    version = false,
+    event = "VeryLazy",
+    config = function()
+      require("mini.splitjoin").setup()
+    end,
   },
 
   -- better yank/paste
@@ -514,6 +480,16 @@ local plugins = {
     event = "VeryLazy",
     config = function()
       require "custom.configs.harpoon"
+    end,
+  },
+
+  -- mini-move - move lines and selections
+  {
+    "echasnovski/mini.move",
+    version = false,
+    event = "VeryLazy",
+    config = function()
+      require("mini.move").setup()
     end,
   },
   -- To make a plugin not be loaded

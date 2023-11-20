@@ -110,6 +110,13 @@ M.rest_nvim = {
     ["<leader>rl"] = { "<Plug>RestNvimLast", "[R]est [L]ast [R]equest" },
   },
 }
+
+M.harpoon = {
+  n = {
+    ["<leader>mf"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "[M]ark [F]ile" },
+    ["<leader>ms"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "[M]ark [S]how" },
+  },
+}
 -- more keybinds!
 
 return M

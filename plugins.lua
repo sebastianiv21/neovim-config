@@ -496,12 +496,24 @@ local plugins = {
     end,
   },
 
-  -- codi.vim - The interactive scratchpad for hackers.
+  -- refactoring
   {
-    "metakirby5/codi.vim",
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("refactoring").setup()
+    end,
+  },
+
+  -- harpoon
+  {
+    "ThePrimeagen/harpoon",
     event = "VeryLazy",
     config = function()
-      require "custom.configs.codi-vim"
+      require "custom.configs.harpoon"
     end,
   },
   -- To make a plugin not be loaded

@@ -478,13 +478,32 @@ local plugins = {
   {
     "rest-nvim/rest.nvim",
     event = "VeryLazy",
-    dependencies = { { "nvim-lua/plenary.nvim" } },
+    dependencies = { "nvim-lua/plenary.nvim" },
     commit = "8b62563",
     config = function()
       require "custom.configs.rest-nvim"
     end,
   },
 
+  -- lab.nvim - Prototyping Tools for Neovim
+  {
+    "0x100101/lab.nvim",
+    event = "VeryLazy",
+    build = "cd js && npm ci",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require "custom.configs.lab-nvim"
+    end,
+  },
+
+  -- codi.vim - The interactive scratchpad for hackers.
+  {
+    "metakirby5/codi.vim",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.codi-vim"
+    end,
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

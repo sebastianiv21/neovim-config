@@ -8,7 +8,7 @@ opt.relativenumber = true
 opt.winbar = "%=%m %f"
 
 -- color column
-opt.colorcolumn = "80"
+opt.colorcolumn = "88"
 
 -- Auto resize panes when resizing nvim window
 -- autocmd("VimResized", {

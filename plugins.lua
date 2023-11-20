@@ -76,6 +76,15 @@ local plugins = {
     end,
   },
 
+  -- Notify - A fancy, configurable, notification manager for NeoVim
+  {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.notify"
+    end,
+  },
+
   -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
   {
     "folke/noice.nvim",

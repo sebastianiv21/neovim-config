@@ -84,6 +84,14 @@ M.dap = {
   n = {
     ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Toggle [D]ebug [B]reakpoint" },
     ["<leader>dr"] = { "<cmd>DapContinue<CR>", "[R]un or Continue the [D]ebugger" },
+    ["<leader>dus"] = {
+      function()
+        local widgets = require "dap.ui.widgets"
+        local sidebar = widgets.sidebar(widgets.scopes)
+        sidebar.open()
+      end,
+      "[D]ebug [U]I [S]cope",
+    },
   },
 }
 
@@ -119,6 +127,18 @@ M.harpoon = {
     ["<leader>ms"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "[M]ark [S]how" },
   },
 }
+
+M.crates = {
+  n = {
+    ["<leader>rcu"] = {
+      function()
+        require("crates").upgrade_all_crates()
+      end,
+      "[R]ust [C]rates [U]pgrade",
+    },
+  },
+}
+
 -- more keybinds!
 
 return M

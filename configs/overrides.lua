@@ -26,6 +26,7 @@ M.treesitter = {
     "json",
     "yaml",
     "http",
+    "sql",
   },
   indent = {
     enable = true,
@@ -50,6 +51,9 @@ M.mason = {
     "prettier",
     "js-debug-adapter",
     "jq",
+
+    -- rust stuff
+    "rust-analyzer",
 
     -- c/cpp stuff
     "clangd",

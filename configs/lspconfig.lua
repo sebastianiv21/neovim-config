@@ -19,6 +19,7 @@ local servers = {
   "cssls",
   "tsserver",
   -- "eslint-lsp",
+  "gopls",
 
   -- c and c++
   "clangd",

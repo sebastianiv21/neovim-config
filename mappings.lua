@@ -139,6 +139,20 @@ M.crates = {
   },
 }
 
+M.gopher = {
+  plugin = true,
+  n = {
+    ["<leader>gsj"] = {
+      "<cmd>GoTagAdd json<CR>",
+      "Add [G]o [S]truct [J]SON [T]ag",
+    },
+    ["<leader>gsy"] = {
+      "<cmd>GoTagAdd yaml<CR>",
+      "Add [G]o [S]truct [Y]aml [T]ag",
+    },
+  },
+}
+
 -- more keybinds!
 
 return M

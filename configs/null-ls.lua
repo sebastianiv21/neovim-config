@@ -26,6 +26,8 @@ local sources = {
   -- b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
   b.formatting.prettier,
   b.diagnostics.eslint_d,
+  b.formatting.gofmt,
+  b.formatting.goimports_reviser,
 
   -- Lua
   b.formatting.stylua,

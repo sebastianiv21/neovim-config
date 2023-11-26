@@ -536,6 +536,19 @@ local plugins = {
     end,
   },
 
+  -- go stuff
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    config = function(_, opts)
+      require("gopher").setup(opts)
+      require("core.utils").load_mappings "gopher"
+    end,
+    build = function()
+      vim.cmd [[silent! GoInstallDeps]]
+    end,
+  },
+
   -- cmp override
   {
     "hrsh7th/nvim-cmp",

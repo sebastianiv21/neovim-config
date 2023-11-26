@@ -51,6 +51,9 @@ M.mason = {
     "prettier",
     "js-debug-adapter",
     "jq",
+    "gopls",
+    "golines",
+    "goimports",
 
     -- rust stuff
     "rust-analyzer",

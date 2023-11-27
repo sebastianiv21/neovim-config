@@ -17,7 +17,7 @@ local servers = {
   -- web dev
   "html",
   "cssls",
-  "tsserver",
+  -- "tsserver",
   -- "eslint-lsp",
   "gopls",
 
@@ -28,24 +28,27 @@ local servers = {
   "pyright",
 }
 
+-- ts/js custom config
+-- lspconfig.tsserver.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   init_options = {
+--     preferences = {
+--       disableSuggestions = true,
+--     },
+--     commands = {
+--       OrganizeImports = {
+--         organize_imports,
+--         description = "Organize Imports",
+--       },
+--     },
+--   },
+-- }
+
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    -- disable preferences
-    -- init_options = {
-    --  preferences = {
-    --    disableSuggestions = true,
-    --  }
-    -- },
-    --
-    -- organize imports
-    -- commands = {
-    -- OrganizeImports = {
-    --  organize_imports,
-    --  description = "Organize Imports",
-    --  },
-    -- },
   }
 end
 

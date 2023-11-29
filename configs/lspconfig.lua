@@ -29,21 +29,29 @@ local servers = {
 }
 
 -- ts/js custom config
--- lspconfig.tsserver.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   init_options = {
---     preferences = {
---       disableSuggestions = true,
---     },
---     commands = {
---       OrganizeImports = {
---         organize_imports,
---         description = "Organize Imports",
---       },
---     },
---   },
--- }
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+  },
+  init_options = {
+    preferences = {
+      disableSuggestions = true,
+    },
+    -- commands = {
+    --   OrganizeImports = {
+    --     organize_imports,
+    --     description = "Organize Imports",
+    --   },
+    -- },
+  },
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

@@ -14,5 +14,5 @@ require("notify").setup {
   render = "wrapped-compact",
   stages = "fade_in_slide_out",
   timeout = 5000,
-  top_down = false,
+  top_down = true,
 }

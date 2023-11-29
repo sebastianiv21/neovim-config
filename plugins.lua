@@ -125,7 +125,7 @@ local plugins = {
           auto_trigger = true,
           debounce = 75,
           keymap = {
-            accept = "<M-l>",
+            accept = "<M-.>",
             accept_word = false,
             accept_line = false,
             next = "<M-]>",
@@ -557,7 +557,10 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     opts = function()
       local M = require "plugins.configs.cmp"
+      -- rust stuff
       table.insert(M.sources, { name = "crates" })
+      -- fake data source for testing
+      table.insert(M.sources, { name = "lab.quick_data", keyword_length = 4 })
       return M
     end,
   },

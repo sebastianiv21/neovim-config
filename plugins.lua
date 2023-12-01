@@ -342,10 +342,16 @@ local plugins = {
         desc = "[T]oggle Vertical [T]erminal",
       },
       {
-        "<leader>tf",
+        "<A-f>",
         "<cmd>ToggleTerm size=60 direction=float<cr>",
         mode = "n",
-        desc = "[T]oggle [F]loating [T]erminal",
+        desc = "Open [F]loating Terminal",
+      },
+      {
+        "<A-f>",
+        "<cmd>ToggleTerm size=60 direction=float<cr>",
+        mode = "t",
+        desc = "Close [F]loating Terminal",
       },
       {
         "<leader>gg",

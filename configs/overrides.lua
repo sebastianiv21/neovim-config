@@ -1,6 +1,6 @@
 local M = {}
 local HEIGHT_RATIO = 0.8 -- You can change this
-local WIDTH_RATIO = 0.5 -- You can change this too
+local WIDTH_RATIO = 0.5  -- You can change this too
 
 local screen_w = vim.opt.columns:get()
 local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
@@ -27,6 +27,7 @@ M.treesitter = {
     "yaml",
     "http",
     "sql",
+    "c_sharp",
   },
   indent = {
     enable = true,
@@ -58,6 +59,7 @@ M.mason = {
     "gopls",
     "golines",
     "goimports",
+    "csharp-language-server",
 
     -- rust stuff
     "rust-analyzer",

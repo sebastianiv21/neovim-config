@@ -42,12 +42,6 @@ M.general = {
       "[S]earch and [R]eplace word",
       opts = { nowait = true },
     },
-    -- add error handler in golang and error ends in return
-    -- '''go
-    -- if err != nil {
-    --   return
-    -- }
-    -- '''
     ["<leader>ge"] = {
       [[oif err != nil {<CR>  return<CR>}<ESC>kA ]],
       "[G]o [E]rror",

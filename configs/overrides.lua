@@ -28,6 +28,7 @@ M.treesitter = {
     "http",
     "sql",
     "c_sharp",
+    "cpp",
   },
   indent = {
     enable = true,
@@ -67,6 +68,7 @@ M.mason = {
     -- c/cpp stuff
     "clangd",
     "clang-format",
+    "codelldb",
 
     --python stuff
     "mypy",

@@ -23,6 +23,7 @@ local servers = {
 
   -- c and c++
   "clangd",
+  "csharp_ls",
 
   -- python
   "pyright",

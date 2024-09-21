@@ -52,6 +52,9 @@ xmap <leader>g<C-n> <Plug>AllOccurrences
 " Nerdtree
 Plug 'preservim/nerdtree'
 
+" clipboard
+set clipboard^=ideaput
+
 
 " CUSTOM CONFIGS
 " Enable relative line numbers
@@ -88,6 +91,8 @@ tunmap <A-i>
 tunmap <A-h>
 
 " Normal mode mappings
+" save file
+nnoremap <C-s> <cmd>w<cr><esc>
 " enter command mode
 nnoremap ; :
 " center on page down
@@ -131,7 +136,7 @@ nnoremap <leader>fr :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " Go Error (for Go development)
 " insert Go error snippet
-nnoremap <leader>ge oif err != nil {<CR><Tab>return<CR>}<ESC>kA
+nnoremap <leader>ge oif err != nil {<CR><Tab>return <CR>}<ESC>kA
 
 " Insert mode mappings
 " move line down

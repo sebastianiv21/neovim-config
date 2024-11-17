@@ -497,6 +497,7 @@ local plugins = {
       require "custom.configs.dap-python"
     end,
   },
+  { "nvim-neotest/nvim-nio" },
 
   -- ChatGPT
   {

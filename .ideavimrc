@@ -1,0 +1,216 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+" Surround plugin
+Plug 'tpope/vim-surround'
+" Sneak
+Plug 'justinmk/vim-sneak'
+" Which-key
+set which-key
+" quick scope
+set quickscope
+" replace with register
+Plug 'vim-scripts/ReplaceWithRegister'
+" multiple cursor
+Plug 'terryma/vim-multiple-cursors'
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+
+" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+" <A-n> is used to enter accented text e.g. ñ
+" Feel free to pick your own mappings that are not affected. I like to use <leader>
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences
+
+" Nerdtree
+Plug 'preservim/nerdtree'
+
+" clipboard
+set clipboard^=ideaput
+
+
+" CUSTOM CONFIGS
+" Enable relative line numbers
+set relativenumber
+
+" Set winbar to show modified status and file name
+"set winbar=%=%m\ %f
+
+" Set a color column at column 88
+set colorcolumn=88
+
+set clipboard=unnamedplus
+
+" CUSTOM MAPPINGS
+let mapleader = " "
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+" Disable key mappings in normal mode
+nunmap <A-i>
+nunmap <C-n>
+nunmap <A-h>
+
+" Disable key mappings in terminal mode
+tunmap <A-i>
+tunmap <A-h>
+
+" Normal mode mappings
+" save file
+nnoremap <C-s> <cmd>w<cr><esc>
+" enter command mode
+nnoremap ; :
+" center on page down
+nnoremap <C-d> <C-d>zz
+" center on page up
+nnoremap <C-u> <C-u>zz
+" center on paragraph down
+nnoremap } }zz
+" center on paragraph up
+nnoremap { {zz
+" center on next word
+nnoremap n nzzzv
+" center on previous word
+nnoremap N Nzzzv
+" do not copy on x
+nnoremap x "_x
+
+" Move lines (commented out because in Vim this requires more setup)
+" nnoremap <A-j> <cmd>m .+1<cr>== " move line down
+" nnoremap <A-k> <cmd>m .-2<cr>== " move line up
+
+" Go to
+" go to start of line (after whitespace)
+nnoremap H ^
+" go to end of line
+nnoremap L $
+
+" Quit all
+" quit all
+nnoremap <leader>qq :qa<CR>
+
+" Search word under cursor
+" search word under cursor
+nnoremap gw *N
+" search word under cursor backwards
+nnoremap gW #N
+
+" Search and Replace word under cursor
+" Search and Replace word
+nnoremap <leader>fr :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+" Go Error (for Go development)
+" insert Go error snippet
+nnoremap <leader>ge oif err != nil {<CR><Tab>return <CR>}<ESC>kA
+
+" Insert mode mappings
+" move line down
+inoremap <A-j> <esc><cmd>m .+1<cr>==gi
+" move line up
+inoremap <A-k> <esc><cmd>m .-2<cr>==gi
+" save file
+inoremap <C-s> <cmd>w<cr><esc>
+
+" Visual mode mappings
+" go to start of line (after whitespace)
+vnoremap H ^
+" go to end of line
+vnoremap L $
+
+" Move lines in Visual mode (commented out for manual setup)
+" move line up
+" vnoremap <A-j> :m '>+1<CR>gv=gv
+" move line down
+" vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Visual block mode mappings
+" go to start of line (after whitespace)
+xnoremap H ^
+" go to end of line
+xnoremap L $
+" save file
+xnoremap <C-s> <cmd>w<cr><esc>
+
+" Search word under cursor in Visual mode
+" search word under cursor
+xnoremap gw *N
+" search word under cursor backwards
+xnoremap gW #N
+" Find and Replace word
+xnoremap <leader>fr :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+" Move to the beginning of the line in insert mode
+inoremap <C-b> <ESC>^i
+
+" Move to the end of the line in insert mode
+inoremap <C-e> <End>
+
+" Navigate within insert mode
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+
+" Clear search highlights
+nnoremap <Esc> :noh<CR>
+
+" Switch between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+
+" Save file
+nnoremap <C-s> :w<CR>
+
+" Copy the entire file content to the clipboard
+nnoremap <C-c> :%y+<CR>
+
+" Toggle line numbers
+nnoremap <leader>n :set nu!<CR>
+
+" Toggle relative line numbers
+nnoremap <leader>rn :set rnu!<CR>
+
+" Move down through wrapped lines
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" Move up and down with arrow keys, respecting wrapped lines
+nnoremap <expr> <Up> (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> <Down> (v:count == 0 ? 'gj' : 'j')

@@ -664,6 +664,11 @@ local plugins = {
   --   "mg979/vim-visual-multi",
   --   lazy = false,
   -- }
+
+  -- for java development
+  {
+    "mfussenegger/nvim-jdtls",
+  },
 }
 
 return plugins

@@ -24,6 +24,7 @@ M.treesitter = {
     "markdown",
     "markdown_inline",
     "json",
+    "java",
     "yaml",
     "http",
     "sql",

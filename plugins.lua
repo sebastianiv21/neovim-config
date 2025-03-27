@@ -421,13 +421,19 @@ local plugins = {
         desc = "[T]oggle Vertical [T]erminal",
       },
       {
-        "<A-f>",
+        "<leader>tf",
+        "<cmd>ToggleTerm size=60 direction=float<cr>",
+        mode = "n",
+        desc = "[T]oggle [F]loating [T]erminal",
+      },
+      {
+        "<M-f>",
         "<cmd>ToggleTerm size=60 direction=float<cr>",
         mode = "n",
         desc = "Open [F]loating Terminal",
       },
       {
-        "<A-f>",
+        "<M-f>",
         "<cmd>ToggleTerm size=60 direction=float<cr>",
         mode = "t",
         desc = "Close [F]loating Terminal",
@@ -500,18 +506,18 @@ local plugins = {
   { "nvim-neotest/nvim-nio" },
 
   -- ChatGPT
-  {
-    "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    config = function()
-      require "custom.configs.chatgpt-nvim"
-    end,
-  },
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  --   config = function()
+  --     require "custom.configs.chatgpt-nvim"
+  --   end,
+  -- },
 
   -- Oil.nvim - edit filesystem like a buffer
   {

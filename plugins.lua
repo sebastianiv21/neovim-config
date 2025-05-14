@@ -547,15 +547,15 @@ local plugins = {
   },
 
   -- lab.nvim - Prototyping Tools for Neovim
-  {
-    "0x100101/lab.nvim",
-    event = "VeryLazy",
-    build = "cd js && npm ci",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require "custom.configs.lab-nvim"
-    end,
-  },
+  -- {
+  --   "0x100101/lab.nvim",
+  --   event = "VeryLazy",
+  --   build = "cd js && npm ci",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require "custom.configs.lab-nvim"
+  --   end,
+  -- },
 
   -- refactoring
   {

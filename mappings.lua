@@ -158,6 +158,16 @@ M.gopher = {
   },
 }
 
+M.rust_tools = {
+  plugin = true,
+  n = {
+    ["<leader>rr"] = { "<cmd>RustRunnables<CR>", "[R]ust [R]unnables" },
+    ["<leader>rh"] = { "<cmd>RustHoverActions<CR>", "[R]ust [H]over Actions" },
+    ["<leader>rc"] = { "<cmd>RustOpenCargo<CR>", "[R]ust Open [C]argo.toml" },
+    ["<leader>rt"] = { "<cmd>lua _G.toggle_inlay_hints()<CR>", "[R]ust [T]oggle Inlay Hints" },
+  },
+}
+
 -- more keybinds!
 
 return M

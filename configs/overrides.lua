@@ -30,6 +30,10 @@ M.treesitter = {
     "sql",
     "c_sharp",
     "cpp",
+    "rust",
+    "toml",
+    "go",
+    "python",
   },
   indent = {
     enable = true,

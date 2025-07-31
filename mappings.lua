@@ -168,6 +168,44 @@ M.rust_tools = {
   },
 }
 
+-- Alternative code actions mapping to bypass noice issues
+M.lsp_alternatives = {
+  n = {
+    ["<leader>ca"] = {
+      function()
+        -- Disable noice temporarily for code actions
+        local ok, noice = pcall(require, "noice")
+        if ok then
+          noice.disable()
+        end
+        
+        vim.lsp.buf.code_action()
+        
+        -- Re-enable noice after a delay
+        if ok then
+          vim.defer_fn(function()
+            noice.enable()
+          end, 100)
+        end
+      end,
+      "LSP [C]ode [A]ction (bypass noice)",
+    },
+    ["<leader>cA"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "LSP [C]ode [A]ction (native)",
+    },
+    -- Telescope-based diagnostics
+    ["<leader>cd"] = {
+      function()
+        require("telescope.builtin").diagnostics({ bufnr = 0 })
+      end,
+      "Buffer [D]iagnostics via Telescope",
+    },
+  },
+}
+
 -- more keybinds!
 
 return M

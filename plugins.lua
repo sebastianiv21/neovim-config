@@ -89,11 +89,13 @@ local plugins = {
   },
 
   -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
+  -- Set enabled = false to disable noice if it causes issues
   {
     "folke/noice.nvim",
-    event = "VeryLazy",
+    enabled = true, -- Change to false to disable noice
+    lazy = false,
+    priority = 1000,
     opts = {
-      -- add any options here
       lsp = {
         hover = {
           enabled = false,
@@ -109,7 +111,7 @@ local plugins = {
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      -- "rcarriga/nvim-notify",
+      "rcarriga/nvim-notify",
     },
   },
 

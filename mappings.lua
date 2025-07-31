@@ -87,15 +87,89 @@ M.general = {
 M.dap = {
   plugin = true,
   n = {
+    -- Breakpoint management
     ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Toggle [D]ebug [B]reakpoint" },
-    ["<leader>dr"] = { "<cmd>DapContinue<CR>", "[R]un or Continue the [D]ebugger" },
+    ["<leader>dB"] = {
+      function()
+        vim.ui.input({ prompt = "Breakpoint condition: " }, function(condition)
+          require("dap").set_breakpoint(condition)
+        end)
+      end,
+      "Set conditional [D]ebug [B]reakpoint",
+    },
+    ["<leader>dL"] = {
+      function()
+        vim.ui.input({ prompt = "Log point message: " }, function(message)
+          require("dap").set_breakpoint(nil, nil, message)
+        end)
+      end,
+      "Set [D]ebug [L]og point",
+    },
+    
+    -- Debug session control
+    ["<leader>dr"] = { "<cmd>DapContinue<CR>", "[D]ebug [R]un/Continue" },
+    ["<leader>ds"] = { "<cmd>DapStepOver<CR>", "[D]ebug [S]tep Over" },
+    ["<leader>di"] = { "<cmd>DapStepInto<CR>", "[D]ebug Step [I]nto" },
+    ["<leader>do"] = { "<cmd>DapStepOut<CR>", "[D]ebug Step [O]ut" },
+    ["<leader>dt"] = { "<cmd>DapTerminate<CR>", "[D]ebug [T]erminate" },
+    ["<leader>dR"] = { "<cmd>DapRestartFrame<CR>", "[D]ebug [R]estart Frame" },
+    
+    -- Debug UI
+    ["<leader>du"] = {
+      function()
+        require("dapui").toggle()
+      end,
+      "Toggle [D]ebug [U]I",
+    },
     ["<leader>dus"] = {
       function()
         local widgets = require "dap.ui.widgets"
         local sidebar = widgets.sidebar(widgets.scopes)
         sidebar.open()
       end,
-      "[D]ebug [U]I [S]cope",
+      "[D]ebug [U]I [S]copes",
+    },
+    ["<leader>duf"] = {
+      function()
+        local widgets = require "dap.ui.widgets"
+        widgets.centered_float(widgets.frames)
+      end,
+      "[D]ebug [U]I [F]rames",
+    },
+    ["<leader>duh"] = {
+      function()
+        require("dap.ui.widgets").hover()
+      end,
+      "[D]ebug [U]I [H]over",
+    },
+    
+    -- REPL and evaluation
+    ["<leader>dre"] = { "<cmd>DapToggleRepl<CR>", "Toggle [D]ebug [RE]PL" },
+    ["<leader>de"] = {
+      function()
+        vim.ui.input({ prompt = "Expression: " }, function(expr)
+          if expr then
+            require("dapui").eval(expr)
+          end
+        end)
+      end,
+      "[D]ebug [E]valuate expression",
+    },
+    
+    -- Launch configurations
+    ["<leader>dl"] = {
+      function()
+        require("dap").run_last()
+      end,
+      "[D]ebug [L]ast configuration",
+    },
+  },
+  v = {
+    ["<leader>de"] = {
+      function()
+        require("dapui").eval()
+      end,
+      "[D]ebug [E]valuate selection",
     },
   },
 }

@@ -60,12 +60,13 @@ M.mason = {
     "deno",
     "eslint_d",
     "prettier",
-    "js-debug-adapter",
     "jq",
+
+    -- go stuff
     "gopls",
     "golines",
     "goimports",
-    "csharp-language-server",
+    "delve", -- Go debugger
 
     -- rust stuff
     "rust-analyzer",
@@ -73,14 +74,27 @@ M.mason = {
     -- c/cpp stuff
     "clangd",
     "clang-format",
-    "codelldb",
+    "codelldb", -- C/C++/Rust debugger
 
-    --python stuff
+    -- c# stuff
+    "csharp-language-server",
+    "netcoredbg", -- C# debugger
+
+    -- python stuff
     "mypy",
     "ruff",
     "pyright",
     "black",
-    "debugpy",
+    "debugpy", -- Python debugger
+
+    -- java stuff
+    "jdtls", -- Java LSP
+
+    -- debug adapters
+    "js-debug-adapter", -- JavaScript/TypeScript/Node.js debugger
+    "node-debug2-adapter", -- Legacy Node.js debugger (backup)
+    "chrome-debug-adapter", -- Chrome debugger for web apps
+    "firefox-debug-adapter", -- Firefox debugger for web apps
   },
 }
 

@@ -245,7 +245,7 @@ M.rust_tools = {
 -- Alternative code actions mapping to bypass noice issues
 M.lsp_alternatives = {
   n = {
-    ["<leader>ca"] = {
+    ["<leader>cA"] = {
       function()
         -- Disable noice temporarily for code actions
         local ok, noice = pcall(require, "noice")
@@ -264,7 +264,7 @@ M.lsp_alternatives = {
       end,
       "LSP [C]ode [A]ction (bypass noice)",
     },
-    ["<leader>cA"] = {
+    ["<leader>ca"] = {
       function()
         vim.lsp.buf.code_action()
       end,
